@@ -12,7 +12,7 @@ export default function App() {
                     height: "100%",
                 }}
             >
-            <View className="w-full justify-center items-center min-h-[85vh] px-6 ">
+            <View className="w-full justify-center items-center min-h-[90vh] px-6 ">
                     <Image
                         source={images.logo}
                         className="w-[130px] h-[84px]"
