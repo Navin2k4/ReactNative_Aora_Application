@@ -21,7 +21,6 @@ const AuthLayout = () => {
         backgroundColor='#161622'
         style='light'
       />
-
     </>
   )
 }
