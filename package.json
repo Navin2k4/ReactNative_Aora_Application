@@ -9,10 +9,13 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "eas-cli": "^9.0.6",
     "expo": "~51.0.7",
     "expo-av": "^14.0.4",
     "expo-constants": "~16.0.1",
+    "expo-document-picker": "^12.0.1",
     "expo-font": "~12.0.5",
+    "expo-image-picker": "~15.0.5",
     "expo-linking": "~6.3.1",
     "expo-router": "~3.5.14",
     "expo-status-bar": "~1.12.1",

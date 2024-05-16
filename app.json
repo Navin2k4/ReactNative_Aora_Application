@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Aora",
-    "scheme": "aora",   
+    "scheme": "aora",
     "slug": "Aora",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -20,13 +20,21 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package":"com.jsm.aora"
+      "package": "com.jsm.aora"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
       "expo-router"
-    ]
+    ],
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "060bdd3c-e5a1-462e-90b4-3f0433dae858"
+      }
+    }
   }
 }
