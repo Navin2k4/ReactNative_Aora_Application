@@ -8,8 +8,10 @@ import EmptyState from '../../components/EmptyState'
 import { getAllPosts, getLatestPosts } from '../../lib/appwrite'
 import useAppwrite from '../../lib/useAppwrite'
 import VideoCard from '../../components/VideoCard'
+import { useGlobalContext } from '../../context/GlobalProvider'
 
 const Home = () => {
+  const { user, setUser, setIsLogged } = useGlobalContext();
 
   const { data: posts, reFetch } = useAppwrite(getAllPosts);
   const { data: latestPosts } = useAppwrite(getLatestPosts);
@@ -28,7 +30,7 @@ const Home = () => {
         data={posts}
         keyExtractor={(item) => item.$id}
         renderItem={({ item }) => (
-          <VideoCard 
+          <VideoCard
             title={item.title}
             thumbnail={item.thumbnail}
             video={item.video}
@@ -37,14 +39,14 @@ const Home = () => {
           />
         )}
         ListHeaderComponent={() => (
-          <View className="flex my-6 px-4 space-y-6">
+          <View className="flex my-6 px-4 space-y-3">
             <View className="flex justify-between items-start flex-row mb-6">
               <View>
                 <Text className="font-pmedium text-sm text-gray-100">
                   Welcome Back
                 </Text>
                 <Text className="text-2xl font-psemibold text-white">
-                  Navin Kumaran
+                  {user?.username}
                 </Text>
               </View>
               <View className='mt-1.5'>
@@ -58,12 +60,10 @@ const Home = () => {
 
             <SearchInput />
 
-            <View className='w-full flex-1 pt-5 pb-8'>
+            <View className='w-full flex-1 pt-5 pb-3'>
               <Text className='text-gray-100 text-lg font-pregular mb-3 tracking-widest'>Top Trending Videos</Text>
+              <Trending posts={latestPosts ?? []} />
             </View>
-
-            <Trending posts={latestPosts ?? []} />
-
           </View>
         )}
         ListEmptyComponent={() => (

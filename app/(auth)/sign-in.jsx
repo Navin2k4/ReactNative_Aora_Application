@@ -3,9 +3,12 @@ import React, { useState } from 'react'
 import { images } from '../../constants'
 import FormField from '../../components/FormField'
 import CustomButton from '../../components/CustomButton'
-import { Link ,router} from 'expo-router'
-import { signIn } from '../../lib/appwrite'
+import { Link, router } from 'expo-router'
+import { getCurrentUser, signIn } from '../../lib/appwrite'
+import { useGlobalContext } from '../../context/GlobalProvider'
+
 const SignIn = () => {
+  const { setUser, setIsLogged } = useGlobalContext();
   const [form, setFrom] = useState(
     {
       email: '',
@@ -22,7 +25,10 @@ const SignIn = () => {
     setIsSumbitting(true);
     try {
       await signIn({ email: form.email, password: form.password });
-      // set it to global state...
+
+      const result = await getCurrentUser();
+      setUser(result);
+      setIsLogged(true);
       router.replace('/home');
     } catch (error) {
       Alert.alert("Error", error.message);
